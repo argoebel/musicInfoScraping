@@ -17,9 +17,16 @@ results_html = uReq(req).read()
 page_soup = BeautifulSoup(results_html, "html.parser")
 
 #grabs all artists
-containers = page_soup.findAll("ul", {"class":"search-results"})
-artist_url = containers[0].div.a['href']
-print(artist_url)
+
+print(len(containers))
+while True:
+    try {
+        containers = page_soup.findAll("ul", {"class":"search-results"})
+        artist_url = containers[0].div.a['href']
+        print(artist_url)
+        break
+    }
+
 
 artist_id = artist_url[-12:]
 print(artist_id)
